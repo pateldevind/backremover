@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter - Free Online Text Analysis Tool</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .feature-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #0d6efd;
+            margin-bottom: 1rem;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        .stat-label {
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        .text-input {
+            min-height: 200px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h2 mb-0">Word Counter</h1>
+                <a href="../index.html" class="btn btn-outline-light">
+                    <i class="fas fa-home me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- Tool Content -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">Count Your Words</h2>
+                        <p class="card-text text-muted mb-4">Analyze your text with our comprehensive word counting tool. Get instant statistics about your content.</p>
+                        
+                        <!-- Word Counter Tool -->
+                        <div class="tool-content">
+                            <!-- Statistics Cards -->
+                            <div class="row mb-4">
+                                <div class="col-md-3">
+                                    <div class="stat-card">
+                                        <div class="stat-value" id="word-count">0</div>
+                                        <div class="stat-label">Words</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="stat-card">
+                                        <div class="stat-value" id="char-count">0</div>
+                                        <div class="stat-label">Characters</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="stat-card">
+                                        <div class="stat-value" id="sentence-count">0</div>
+                                        <div class="stat-label">Sentences</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="stat-card">
+                                        <div class="stat-value" id="paragraph-count">0</div>
+                                        <div class="stat-label">Paragraphs</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Text Input -->
+                            <div class="mb-4">
+                                <textarea class="form-control text-input" id="text-input" 
+                                    placeholder="Type or paste your text here..."></textarea>
+                            </div>
+
+                            <!-- Additional Statistics -->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="stat-card">
+                                        <div class="stat-value" id="char-no-space-count">0</div>
+                                        <div class="stat-label">Characters (no spaces)</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="stat-card">
+                                        <div class="stat-value" id="reading-time">0</div>
+                                        <div class="stat-label">Reading Time (minutes)</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="d-flex justify-content-center gap-3">
+                                <button class="btn btn-primary btn-lg" id="clear-btn">
+                                    <i class="fas fa-trash me-2"></i>Clear Text
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info d-none" id="info-alert" role="alert">
+                            <!-- Info messages will be displayed here -->
+                        </div>
+
+                        <div class="alert alert-danger d-none" id="error-alert" role="alert">
+                            <!-- Error messages will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Section -->
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="card feature-card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-bolt feature-icon"></i>
+                                <h5>Real-time Counting</h5>
+                                <p class="text-muted">Get instant word and character counts as you type or paste your text.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card feature-card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-chart-bar feature-icon"></i>
+                                <h5>Detailed Statistics</h5>
+                                <p class="text-muted">View comprehensive statistics including words, characters, sentences, and more.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card feature-card h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-clock feature-icon"></i>
+                                <h5>Reading Time</h5>
+                                <p class="text-muted">Estimate how long it will take to read your text with our reading time calculator.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Ad Space -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Advertisement</h5>
+                        <div class="ad-space">
+                            <div class="text-center p-3 bg-light rounded">
+                                <i class="fas fa-ad fa-2x mb-2"></i>
+                                <p class="mb-0">Advertisement Space</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Tools -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Related Tools</h5>
+                        <div class="related-tools">
+                            <!-- Related tools will be dynamically loaded -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Your trusted platform for online tools and text analysis.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Tools</a></li>
+                        <li><a href="#" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@example.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/template.js"></script>
+    <script src="../js/tools/word-counter.js"></script>
+</body>
+</html> 

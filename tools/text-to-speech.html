@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech Converter - Background Remover & Tools Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">Text to Speech Converter</h1>
+                <a href="../index.html" class="btn btn-outline-light">
+                    <i class="fas fa-home me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- Tool Content -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">Convert Text to Speech</h2>
+                        <p class="card-text">Convert your text into natural-sounding speech with customizable voices and settings.</p>
+                        
+                        <!-- Text to Speech Tool -->
+                        <div class="tool-content">
+                            <div class="mb-4">
+                                <div class="form-group">
+                                    <label for="text-input" class="form-label">Enter Text</label>
+                                    <textarea id="text-input" class="form-control" rows="6" placeholder="Type or paste your text here..."></textarea>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="voice-select" class="form-label">Select Voice</label>
+                                            <select id="voice-select" class="form-select">
+                                                <option value="">Loading voices...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="rate-range" class="form-label">Speech Rate</label>
+                                            <input type="range" id="rate-range" class="form-range" min="0.5" max="2" step="0.1" value="1">
+                                            <div class="text-center" id="rate-value">1.0</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="pitch-range" class="form-label">Pitch</label>
+                                            <input type="range" id="pitch-range" class="form-range" min="0.5" max="2" step="0.1" value="1">
+                                            <div class="text-center" id="pitch-value">1.0</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="volume-range" class="form-label">Volume</label>
+                                            <input type="range" id="volume-range" class="form-range" min="0" max="1" step="0.1" value="1">
+                                            <div class="text-center" id="volume-value">1.0</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-center gap-3 mt-4">
+                                    <button class="btn btn-primary" id="speak-btn">
+                                        <i class="fas fa-play me-2"></i>Speak
+                                    </button>
+                                    <button class="btn btn-warning" id="pause-btn" disabled>
+                                        <i class="fas fa-pause me-2"></i>Pause
+                                    </button>
+                                    <button class="btn btn-danger" id="stop-btn" disabled>
+                                        <i class="fas fa-stop me-2"></i>Stop
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info d-none" id="info-alert" role="alert">
+                                <!-- Info messages will be displayed here -->
+                            </div>
+
+                            <div class="alert alert-danger d-none" id="error-alert" role="alert">
+                                <!-- Error messages will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Ad Space -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Advertisement</h5>
+                        <div class="ad-space">
+                            <div class="text-center p-3 bg-light rounded">
+                                <i class="fas fa-ad fa-2x mb-2"></i>
+                                <p class="mb-0">Advertisement Space</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Tools -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Related Tools</h5>
+                        <div class="related-tools">
+                            <!-- Related tools will be dynamically loaded -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Your trusted platform for online tools and image processing.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Tools</a></li>
+                        <li><a href="#" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@example.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/template.js"></script>
+    <script src="../js/tools/text-to-speech.js"></script>
+</body>
+</html> 

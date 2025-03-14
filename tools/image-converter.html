@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter - Background Remover & Tools Hub</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">Image Converter</h1>
+                <a href="../index.html" class="btn btn-outline-light">
+                    <i class="fas fa-home me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- Tool Content -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">Convert Images</h2>
+                        <p class="card-text">Convert your images between different formats like JPG, PNG, WebP, and more.</p>
+                        
+                        <!-- Image Converter Tool -->
+                        <div class="tool-content">
+                            <div class="upload-section text-center p-5 border rounded mb-4">
+                                <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+                                <h3>Upload Your Image</h3>
+                                <p>Drag and drop your image here or click to browse</p>
+                                <input type="file" id="image-input" accept="image/*" class="d-none">
+                                <button class="btn btn-primary" onclick="document.getElementById('image-input').click()">
+                                    Choose File
+                                </button>
+                            </div>
+
+                            <div id="conversion-options" class="d-none">
+                                <div class="mb-4">
+                                    <h4>Conversion Options</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="format-select" class="form-label">Output Format</label>
+                                                <select class="form-select" id="format-select">
+                                                    <option value="jpeg">JPEG</option>
+                                                    <option value="png">PNG</option>
+                                                    <option value="webp">WebP</option>
+                                                    <option value="bmp">BMP</option>
+                                                    <option value="tiff">TIFF</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mb-3">
+                                                <label for="quality-select" class="form-label">Quality</label>
+                                                <select class="form-select" id="quality-select">
+                                                    <option value="1">Maximum</option>
+                                                    <option value="0.8">High</option>
+                                                    <option value="0.6">Medium</option>
+                                                    <option value="0.4">Low</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="preview-section mb-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4>Original Image</h4>
+                                            <img id="original-preview" class="img-fluid rounded" alt="Original Image">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Converted Image</h4>
+                                            <img id="converted-preview" class="img-fluid rounded" alt="Converted Image">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button id="convert-btn" class="btn btn-success">
+                                        <i class="fas fa-sync-alt me-2"></i>Convert Image
+                                    </button>
+                                    <button id="download-btn" class="btn btn-primary ms-2 d-none">
+                                        <i class="fas fa-download me-2"></i>Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Ad Space -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Advertisement</h5>
+                        <div class="ad-space">
+                            <div class="text-center p-3 bg-light rounded">
+                                <i class="fas fa-ad fa-2x mb-2"></i>
+                                <p class="mb-0">Advertisement Space</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Tools -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Related Tools</h5>
+                        <div class="related-tools">
+                            <!-- Related tools will be dynamically loaded -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Your trusted platform for online tools and image processing.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Tools</a></li>
+                        <li><a href="#" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: support@example.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/template.js"></script>
+    <script src="../js/tools/image-converter.js"></script>
+</body>
+</html> 
